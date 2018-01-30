@@ -1,0 +1,25 @@
+group 'com.thoughtworks.spike'
+version '1.0.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+mainClassName = "Main"
+repositories {
+    mavenCentral()
+}
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'Main'
+        )
+    }
+}
