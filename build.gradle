@@ -15,11 +15,20 @@ buildscript {
         mavenCentral()
     }
 }
+configurations {
+    extraLibs
+}
+dependencies {
+    extraLibs group: 'commons-collections', name: 'commons-collections', version: '3.2.1'
+}
 
 jar {
     manifest {
         attributes(
                 'Main-Class': 'Main'
         )
+    }
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
